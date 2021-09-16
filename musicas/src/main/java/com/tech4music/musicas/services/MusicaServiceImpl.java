@@ -44,8 +44,8 @@ public class MusicaServiceImpl implements MusicaService {
         if(optionalMusica.isEmpty()){
             throw new InputMismatchException("Jogador não encontrado com o ID: " + idMusica);
         }
-        MusicaDTO MusicaDto = new ModelMapper().map(optionalMusica.get(), MusicaDTO.class);
-        return Optional.of(MusicaDto);
+        MusicaDTO musicaDto = new ModelMapper().map(optionalMusica.get(), MusicaDTO.class);
+        return Optional.of(musicaDto);
     }
 
     @Override
@@ -66,17 +66,9 @@ public class MusicaServiceImpl implements MusicaService {
         repositorioMusica.deleteById(idMusica);
     }
 
-    @Override
-    public MusicaDTO atualizar(String idMusica, MusicaDTO musicaDto) {
+    // @Override
+    // public Optional<MusicaDTO> atualizar(String idMusica, MusicaDTO musicadDto) {
         
-        ModelMapper mapper = new ModelMapper();
-        Musica musica = mapper.map(musicaDto, Musica.class);
-        
-        musicaDto.setId(idMusica);
-        musica = repositorioMusica.save(musica);
-
-        return mapper.map(musica, MusicaDTO.class);
-    }
-
-
+         
+    // }
 }

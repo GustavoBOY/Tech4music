@@ -3,6 +3,7 @@ package com.tech4music.musicas.services;
 import java.util.List;
 import java.util.Optional;
 
+
 import com.tech4music.musicas.shared.MusicaDTO;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +16,10 @@ public interface MusicaService {
 
     MusicaDTO adicionar(MusicaDTO musicaDto);
     
-    MusicaDTO atualizar(String idMusica, MusicaDTO musicaDto);
+    // MusicaDTO atualizar(String idMusica, MusicaDTO musicadDto);
 
     void deletar(String idMusica);
     
-    // Musica atualizar(String idMusica, Musica musica);
     
     
 }
