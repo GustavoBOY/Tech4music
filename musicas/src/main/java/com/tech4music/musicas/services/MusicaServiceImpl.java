@@ -16,8 +16,11 @@ import com.tech4music.musicas.shared.MusicaDTO;
 //#region import Org
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 //#endregion
+import org.springframework.web.client.HttpServerErrorException.InternalServerError;
 
 @Service
 public class MusicaServiceImpl implements MusicaService {
@@ -66,9 +69,28 @@ public class MusicaServiceImpl implements MusicaService {
         repositorioMusica.deleteById(idMusica);
     }
 
-    // @Override
-    // public Optional<MusicaDTO> atualizar(String idMusica, MusicaDTO musicadDto) {
+    @Override
+    public MusicaDTO atualizar(String idMusica, MusicaDTO musicadDto) {
         
-         
-    // }
+        //    if(repositorioMusica.findById(idMusica).isPresent()){
+               ModelMapper mapper = new ModelMapper();
+               
+                Musica musicaAtual = mapper.map(musicadDto, Musica.class);
+                musicaAtual = repositorioMusica.findById(idMusica).get();
+
+                musicaAtual.setTitulo(musicadDto.getTitulo());
+                musicaAtual.setArtista(musicadDto.getArtista());
+                musicaAtual.setAlbum(musicadDto.getAlbum());
+                musicaAtual.setGenero(musicadDto.getGenero());
+                musicaAtual.setAnoLancamento(musicadDto.getAnoLancamento());
+                musicaAtual.setCompositor(musicadDto.getCompositor());
+
+               return repositorioMusica.save(musicaAtual);
+
+      
+        //    }
+
+           
+
+    }
 }
