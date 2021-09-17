@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-MusicasApplication<musicas>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.tech4music.musicas.MusicasApplication",
+            "projectName": "musicas",
+            "args": ""
+        }
+    ]
+}

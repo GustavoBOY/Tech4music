@@ -1,7 +1,7 @@
 package com.tech4music.musicas.controller;
 
 
-import java.util.InputMismatchException;
+
 //#region import java util
 import java.util.List;
 import java.util.Optional;
@@ -13,12 +13,10 @@ import com.tech4music.musicas.services.MusicaServiceImpl;
 import com.tech4music.musicas.shared.MusicaDTO;
 //#endregion
 
-import org.modelmapper.ModelMapper;
 //#region import springframework
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -69,11 +67,13 @@ public class MusicaController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    // @PutMapping("/{id}")
-    // public ResponseEntity<Musica> atualizar(
-        
-
-        
-    // }
+    @PutMapping("/{id}")
+    public ResponseEntity<Musica> atualizar(
+        @PathVariable String id, 
+        @RequestBody Musica musica){
+            
+        Musica musicaAtualizado = servicoMusica.atualizar(id, musica);
+        return new ResponseEntity<>(musicaAtualizado, HttpStatus.OK);
+    }
 
 }
