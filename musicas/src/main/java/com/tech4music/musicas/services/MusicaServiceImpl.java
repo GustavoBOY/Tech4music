@@ -67,10 +67,22 @@ public class MusicaServiceImpl implements MusicaService {
     }
 
     @Override
-    public Musica atualizar(String idMusica, Musica musica) {
+    public Musica atualizar(String idMusica, MusicaDTO musicaDto) {
 
-        musica.setId(idMusica);
+        if(repositorioMusica.findById(idMusica).isPresent()){
 
-        return repositorioMusica.save(musica);        
+            Musica musicaAtual = repositorioMusica.findById(idMusica).get();
+
+            musicaAtual.setTitulo(musicaDto.getTitulo());
+            musicaAtual.setArtista(musicaDto.getArtista());
+            musicaAtual.setAlbum(musicaDto.getAlbum());
+            musicaAtual.setGenero(musicaDto.getGenero());
+            musicaAtual.setAnoLancamento(musicaDto.getAnoLancamento());
+            musicaAtual.setCompositor(musicaDto.getCompositor());
+
+            return repositorioMusica.save(musicaAtual);
+        }else{
+            throw new InputMismatchException("ID não encontrado ");
+        }    
     }
 }

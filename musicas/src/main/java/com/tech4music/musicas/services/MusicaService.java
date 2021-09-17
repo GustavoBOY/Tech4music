@@ -16,7 +16,7 @@ public interface MusicaService {
 
     MusicaDTO adicionar(MusicaDTO musicaDto);
     
-    Musica atualizar(String idMusica, Musica musicad);
+    Musica atualizar(String idMusica, MusicaDTO musicaDto);
 
     void deletar(String idMusica);
     

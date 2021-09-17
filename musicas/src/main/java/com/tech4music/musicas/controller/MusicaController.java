@@ -37,7 +37,6 @@ public class MusicaController {
     //listar todas as músicas
     @GetMapping
     public ResponseEntity<List<MusicaDTO>> obterTodos(){
-
         
         List<MusicaDTO> musicas = servicoMusica.obterTodos();
         return new ResponseEntity<>(musicas, HttpStatus.OK);
@@ -68,12 +67,9 @@ public class MusicaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Musica> atualizar(
-        @PathVariable String id, 
-        @RequestBody Musica musica){
-            
-        Musica musicaAtualizado = servicoMusica.atualizar(id, musica);
-        return new ResponseEntity<>(musicaAtualizado, HttpStatus.OK);
+    public ResponseEntity<Musica> atualizar(@PathVariable String id, @RequestBody MusicaDTO musicaDto){
+
+        return new ResponseEntity<>(servicoMusica.atualizar(id, musicaDto), HttpStatus.OK);
     }
 
 }
