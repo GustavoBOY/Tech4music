@@ -7,9 +7,10 @@ import java.util.List;
 import java.util.Optional;
 //#endregion
 
-import com.tech4music.musicas.model.Musica;
+
 //#region import Tech4music
 import com.tech4music.musicas.services.MusicaServiceImpl;
+import com.tech4music.musicas.model.Musica;
 import com.tech4music.musicas.shared.MusicaDTO;
 //#endregion
 
@@ -65,7 +66,7 @@ public class MusicaController {
         servicoMusica.deletar(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
+    //atualizar música
     @PutMapping("/{id}")
     public ResponseEntity<Musica> atualizar(@PathVariable String id, @RequestBody MusicaDTO musicaDto){
 

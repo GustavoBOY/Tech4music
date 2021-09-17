@@ -24,7 +24,8 @@ public class MusicaServiceImpl implements MusicaService {
     
     @Autowired
     MusicaRepository repositorioMusica;
-
+    
+    //listar todas as músicas
     @Override
     public List<MusicaDTO> obterTodos() {
         
@@ -35,19 +36,20 @@ public class MusicaServiceImpl implements MusicaService {
         .map(musica -> mapper.map(musica, MusicaDTO.class))
         .collect(Collectors.toList());
     }
-
+    //listar músicas pelo ID
     @Override
     public Optional<MusicaDTO> obterPorId(String idMusica) {
 
         Optional<Musica> optionalMusica = repositorioMusica.findById(idMusica);
-       
+
         if(optionalMusica.isEmpty()){
             throw new InputMismatchException("Jogador não encontrado com o ID: " + idMusica);
         }
+
         MusicaDTO musicaDto = new ModelMapper().map(optionalMusica.get(), MusicaDTO.class);
         return Optional.of(musicaDto);
     }
-
+    //adicionar música
     @Override
     public MusicaDTO adicionar(MusicaDTO musicaDto) {
        
@@ -59,18 +61,17 @@ public class MusicaServiceImpl implements MusicaService {
         
         return mapper.map(musica, MusicaDTO.class);
     }
-
+    //deletar música
     @Override
     public void deletar(String idMusica) {
 
         repositorioMusica.deleteById(idMusica);
     }
-
+    //atualizar música
     @Override
     public Musica atualizar(String idMusica, MusicaDTO musicaDto) {
 
         if(repositorioMusica.findById(idMusica).isPresent()){
-
             Musica musicaAtual = repositorioMusica.findById(idMusica).get();
 
             musicaAtual.setTitulo(musicaDto.getTitulo());
@@ -79,10 +80,9 @@ public class MusicaServiceImpl implements MusicaService {
             musicaAtual.setGenero(musicaDto.getGenero());
             musicaAtual.setAnoLancamento(musicaDto.getAnoLancamento());
             musicaAtual.setCompositor(musicaDto.getCompositor());
-
             return repositorioMusica.save(musicaAtual);
         }else{
-            throw new InputMismatchException("ID não encontrado ");
+            throw new InputMismatchException("ID não encontrado");
         }    
     }
 }
