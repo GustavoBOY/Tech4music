@@ -1,3 +1,6 @@
+OBSERVAÇÃO: Resources/application.properties configurado a porta 8081 para o Local Host
+===
+
 # Tech4music
 ApiRestFul_Tech4music
 
