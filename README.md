@@ -1,5 +1,5 @@
-OBSERVAÇÃO: Resources/application.properties configurado a porta 8081 para o Local Host
-===
+**Observação: Resources/application.properties configurado a porta 8081 para o Local Host**
+---
 
 # Tech4music
 ApiRestFul_Tech4music
@@ -8,24 +8,25 @@ Crie um projeto no VS Code, utilizando as extensões Spring Web e Spring Data
 MongoDB. Crie os pacotes model, repository, service, shared e controller, bem
 como as classes necessárias para realizar cada funcionalidade esperada no CRUD:
 
-• model
+**• model**
 
-Musica.java
-• repository
+>Musica.java
 
-MusicaRepository.java
+**• repository**
 
-• service
+>MusicaRepository.java
 
-MusicaService.java
-MusicaServiceImpl.java
+**• service**
 
-• shared
+>MusicaService.java
+>MusicaServiceImpl.java
 
-MusicaDto.java
+**• shared**
 
-• controller
+>MusicaDto.java
 
-MusicaController.java
+**• controller**
+
+>MusicaController.java
 
 
