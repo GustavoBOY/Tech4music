@@ -54,7 +54,7 @@ public class MusicaController {
 
     //adicionar música
     @PostMapping
-    public ResponseEntity<MusicaDTO> adicionar(@RequestBody MusicaDTO musicaDto){
+    public ResponseEntity<MusicaDTO> adicionar(@RequestBody @Valid MusicaDTO musicaDto){
 
         musicaDto = servicoMusica.adicionar(musicaDto);
         return new ResponseEntity<>(musicaDto, HttpStatus.CREATED);
