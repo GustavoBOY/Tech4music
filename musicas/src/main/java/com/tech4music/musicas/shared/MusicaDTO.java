@@ -1,9 +1,15 @@
 package com.tech4music.musicas.shared;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 public class MusicaDTO {
 
     private String id;
 
+    @NotBlank(message = "O nome deve possuir caracteres não brancos")
+    @NotEmpty(message = "O nome deve ser preenchido")
+    @Size(min = 3, message = "O nome deve ter, no mínimo, 3 caracteres")
     private String titulo;
 
     private String artista;

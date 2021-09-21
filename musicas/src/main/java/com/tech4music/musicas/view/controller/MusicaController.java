@@ -1,4 +1,4 @@
-package com.tech4music.musicas.controller;
+package com.tech4music.musicas.view.controller;
 
 
 
@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 //#endregion
 
+import javax.validation.Valid;
 
 //#region import Tech4music
 import com.tech4music.musicas.services.MusicaServiceImpl;
@@ -68,7 +69,7 @@ public class MusicaController {
     }
     //atualizar música
     @PutMapping("/{id}")
-    public ResponseEntity<Musica> atualizar(@PathVariable String id, @RequestBody MusicaDTO musicaDto){
+    public ResponseEntity<Musica> atualizar(@PathVariable String id, @RequestBody @Valid MusicaDTO musicaDto){
 
         return new ResponseEntity<>(servicoMusica.atualizar(id, musicaDto), HttpStatus.OK);
     }
